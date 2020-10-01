@@ -4,6 +4,7 @@ import Controlls from './Controlls';
 import Slider from "react-slick";
 import { useDispatch, useSelector } from 'react-redux';
 import { imagePath } from '../../utils/helpers';
+import { updateActiveSlide } from '../../store/slider/actions'
 
 const SlideshowWrap = styled.div`
   height: 200px;
@@ -43,16 +44,25 @@ const Slide = ({src}) => {
 
 const SlideshowPlayer = () => {
   const images = useSelector(state => state.sliderApp.activeImages);
+  const activeSlide = useSelector(state => state.sliderApp.activeSlide);
+  const dispatch = useDispatch();
+
   const [imageWithPlaceholder, setPlaceholder] = useState(images);
   const [settings, setSettings] = useState({        
     dots: true,
     speed:500,
     infinite:true,
     autoplay:true,
-    arrows: false
+    arrows: false,
+    beforeChange: (oldIndex, newIndex) => dispatch(updateActiveSlide(newIndex))
   })
   const slider = useRef(null);
 
+  useEffect(()=>{
+    slider.current.slickGoTo(activeSlide)
+  }, [activeSlide]);
+
+  
   useEffect(()=>{
     const newImages = images.map(image =>  {
       if (image && !image.src) {
@@ -64,7 +74,6 @@ const SlideshowPlayer = () => {
     });
     setPlaceholder(newImages)
   }, [images]);
-
 
   return (
     <SlideshowWrap> 
