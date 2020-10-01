@@ -7,7 +7,7 @@ import { imagePath } from '../../utils/helpers';
 import { updateActiveSlide } from '../../store/slider/actions'
 
 const SlideshowWrap = styled.div`
-  height: 200px;
+  height: 260px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -15,12 +15,12 @@ const SlideshowWrap = styled.div`
   margin-right: 10px;
   .slick-slide {
     img {
-      height: 157px;
+      height: 218px;
       width: 100%;
     }
   }
   .slick-dots {
-    bottom: 0;
+    bottom: 13px;
     z-index: 10000000000;
     li button:before {
       color: white;

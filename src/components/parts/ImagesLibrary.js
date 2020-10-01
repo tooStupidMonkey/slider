@@ -4,7 +4,7 @@ import Image from '../common/Image';
 import { useSelector } from 'react-redux';
 
 const ImagesWrap = styled.div`
-  height: 170px;
+  height: 228px;
   position: relative;
   display: flex;
   flex-wrap: wrap;
