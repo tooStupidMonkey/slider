@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
-import EmptyImage from '../common/EmptyImage';
+import {useSelector } from 'react-redux';
 import Image from '../common/Image';
 
 const TilelineWrap = styled.div`

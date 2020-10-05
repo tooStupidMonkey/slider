@@ -13,9 +13,8 @@ const initialState = {
 export function sliderApp(state = initialState, action) {
   switch (action.type) {
     case UPDATE_IMAGE:
-      let newActiveImages = [...state.activeImages];
-      newActiveImages[action.key] = state.allImages[state.activeElement]
-      return {...state, activeImages: newActiveImages}
+      state.activeImages[action.key] = state.allImages[state.activeElement]
+      return {...state, activeImages: [...state.activeImages]}
     case REMOVE_IMAGE:
       let updatedActiveImages = [...state.activeImages];
       updatedActiveImages[action.key] = {}
